@@ -1,12 +1,12 @@
-# Formos Uzklausu Apdorojimas
+# Formos Užklausų Apdorojimas
 
 ## Tikslas
 
-Priimti kliento uzklausas per web forma ir perduoti n8n workflow'ui apdorojimui. Forma leidzia klientams nurodyti savo poreikius (saules elektrines tipas, stogo parametrai, kontaktine informacija), o sistema automatiskai perduoda duomenis tolesniam apdorojimui.
+Priimti kliento užklausas per web formą ir perduoti n8n workflow'ui apdorojimui. Forma leidžia klientams nurodyti savo poreikius (saulės elektrinės tipas, stogo parametrai, kontaktinė informacija), o sistema automatiškai perduoda duomenis tolesniam apdorojimui.
 
 ---
 
-## Ivestys (Inputs)
+## Įvestys (Inputs)
 
 ### Formos laukai
 
@@ -15,50 +15,50 @@ Priimti kliento uzklausas per web forma ir perduoti n8n workflow'ui apdorojimui.
 | Laukas | Tipas | Privalomas | Validacija |
 |--------|-------|------------|------------|
 | Vardas | text | Taip | Min 2 simboliai |
-| El. pastas | email | Taip | RFC 5322 formatas |
+| El. paštas | email | Taip | RFC 5322 formatas |
 | Telefonas | tel | Taip | Lietuvos formatas: +370XXXXXXXX arba 8XXXXXXXX |
-| Tipas | select | Taip | Vienas is: namams, verslui, ukiui |
-| Menesines sanaudos kWh | number | Taip | 50-5000 kWh |
-| Stogo tipas | select | Taip | Vienas is: skardinnis, cerpinis, plokscias, kitas |
-| Stogo orientacija | select | Taip | Vienas is: pietus, pieryciu, pietvakriu, rytai, vakarai, kita |
+| Tipas | select | Taip | Vienas iš: namams, verslui, ūkiui |
+| Mėnesinės sąnaudos kWh | number | Taip | 50-5000 kWh |
+| Stogo tipas | select | Taip | Vienas iš: skardinis, čerpinis, plokščias, kitas |
+| Stogo orientacija | select | Taip | Vienas iš: pietūs, pietryčių, pietvakrių, rytai, vakarai, kita |
 | Stogo plotas m2 | number | Taip | 10-500 m2 |
-| Seseliai | select | Ne | Vienas is: nera, menki, vidutiniai, dideli |
-| Tarifas | select | Ne | Vienas is: standartinis, dvizonis, trizonis |
-| Papildoma info | textarea | Ne | Max 1000 simboliu |
+| Šešėliai | select | Ne | Vienas iš: nėra, menki, vidutiniai, dideli |
+| Tarifas | select | Ne | Vienas iš: standartinis, dvizonis, trizonis |
+| Papildoma info | textarea | Ne | Max 1000 simbolių |
 
 **Papildomi laukai (checkbox/select):**
 
-| Laukas | Tipas | Aprasymas |
+| Laukas | Tipas | Aprašymas |
 |--------|-------|-----------|
 | dominaKaupiklis | checkbox | Ar domina energijos kaupiklis (baterija) |
 | dominaAPVA | checkbox | Ar domina APVA subsidija |
-| dominaEV | checkbox | Ar domina EV ikrovimo stotele |
-| dominaServisas | checkbox | Ar domina prieziuros paslauga |
+| dominaEV | checkbox | Ar domina EV įkrovimo stotelė |
+| dominaServisas | checkbox | Ar domina priežiūros paslauga |
 
-### Galios skaiciavimas
+### Galios skaičiavimas
 
 ```
-Rekomenduojama galia (kWp) = Menesines sanaudos (kWh) x 12 / 1050
+Rekomenduojama galia (kWp) = Mėnesinės sąnaudos (kWh) x 12 / 1050
 ```
 
-- 1050 kWh/kWp - vidutine metine saules energijos gamyba Lietuvoje 1 kWp galiai
-- Koeficientas koreguojamas pagal stogo orientacija:
-  - Pietus: 1.0 (bazinis)
-  - Pieryciu/Pietvakriu: 0.95
+- 1050 kWh/kWp - vidutinė metinė saulės energijos gamyba Lietuvoje 1 kWp galiai
+- Koeficientas koreguojamas pagal stogo orientaciją:
+  - Pietūs: 1.0 (bazinis)
+  - Pietryčių/Pietvakrių: 0.95
   - Rytai/Vakarai: 0.85
   - Kita: 0.80
 
-**Pavyzdys:** 300 kWh/men, pietu orientacija = 300 * 12 / 1050 / 1.0 = 3.43 kWp
+**Pavyzdys:** 300 kWh/mėn, pietų orientacija = 300 * 12 / 1050 / 1.0 = 3.43 kWp
 
 ---
 
-## Irankiai / Skriptai (Tools/Scripts)
+## Įrankiai / Skriptai (Tools/Scripts)
 
-| Irankis | Paskirtis |
+| Įrankis | Paskirtis |
 |---------|-----------|
 | `frontend/app/page.tsx` | Formos UI komponentas (Next.js) |
-| `frontend/app/api/submit/route.ts` | API endpoint formos duomenu priemimui |
-| n8n Webhook | Priima duomenis is Next.js API |
+| `frontend/app/api/submit/route.ts` | API endpoint formos duomenų priėmimui |
+| n8n Webhook | Priima duomenis iš Next.js API |
 
 ---
 
@@ -66,23 +66,23 @@ Rekomenduojama galia (kWp) = Menesines sanaudos (kWh) x 12 / 1050
 
 ### 1. Formos pildymas (frontend)
 
-1. Klientas atidaro forma
-2. Pasirenka saules elektrines tipa (namams/verslui/ukiui)
+1. Klientas atidaro formą
+2. Pasirenka saulės elektrinės tipą (namams/verslui/ūkiui)
 3. Nurodo stogo parametrus (tipas, orientacija, plotas)
-4. Nurodo menesines elektros sanaudas
+4. Nurodo mėnesines elektros sąnaudas
 5. Pasirenka papildomas paslaugas (kaupiklis, APVA, EV, servisas)
-6. Uzklausa galima siusti tik kai visi privalomi laukai uzpildyti
+6. Užklausą galima siųsti tik kai visi privalomi laukai užpildyti
 
 ### 2. Formos pateikimas (API route)
 
-1. Frontend siuncia POST request i `/api/submit`
-2. API route atlieka server-side validacija
-3. Apskaiciuoja galia: `menesinesSanaudos * 12 / 1050 / orientacijos_koeficientas`
-4. Apskaiciuoja moduliu skaiciu: `Math.ceil(galia_kWp / 0.445)` (standartinis 445W modulis)
-5. Apskaiciuoja metine gamyba: `galia_kWp * 1050`
-6. Suformuoja JSON ir siuncia i n8n webhook
+1. Frontend siunčia POST request į `/api/submit`
+2. API route atlieka server-side validaciją
+3. Apskaičiuoja galią: `menesinesSanaudos * 12 / 1050 / orientacijos_koeficientas`
+4. Apskaičiuoja modulių skaičių: `Math.ceil(galia_kWp / 0.445)` (standartinis 445W modulis)
+5. Apskaičiuoja metinę gamybą: `galia_kWp * 1050`
+6. Suformuoja JSON ir siunčia į n8n webhook
 
-### 3. JSON struktura siunciama i n8n
+### 3. JSON struktūra siunčiama į n8n
 
 ```json
 {
@@ -103,12 +103,12 @@ Rekomenduojama galia (kWp) = Menesines sanaudos (kWh) x 12 / 1050
   "apskaiciuota_galia_kwp": 3.43,
   "moduliu_sk": 8,
   "metine_gamyba_kwh": 3601,
-  "papildoma_info": "Noreciau suzinoti apie APVA subsidija",
+  "papildoma_info": "Norėčiau sužinoti apie APVA subsidiją",
   "data": "2026-03-08T10:30:00Z"
 }
 ```
 
-### 4. n8n webhook konfiguracija
+### 4. n8n webhook konfigūracija
 
 - **Metodas:** POST
 - **URL:** https://n8n.blingo.lt/webhook/lda-saules-uzklausos
@@ -117,38 +117,38 @@ Rekomenduojama galia (kWp) = Menesines sanaudos (kWh) x 12 / 1050
 
 ---
 
-## Isvestys (Outputs)
+## Išvestys (Outputs)
 
-- **Sekminga:** Klientas mato patvirtinimo zinute "Jusu uzklausa priimta! Komercini pasiulyma gausite el. pastu per 5 minutes."
-- **Klaida:** Klientas mato klaidos zinute su galimybe bandyti dar karta
+- **Sėkminga:** Klientas mato patvirtinimo žinutę "Jūsų užklausa priimta! Komercinį pasiūlymą gausite el. paštu per 5 minutes."
+- **Klaida:** Klientas mato klaidos žinutę su galimybe bandyti dar kartą
 
 ---
 
-## Krasztiniu Atveju Valdymas (Edge Cases)
+## Kraštinių Atvejų Valdymas (Edge Cases)
 
-### Dubliuotos uzklausos
-- Formoje naudojamas `submitting` state kuris neleidzia pakartotinai spausti mygtuko
-- n8n workflow tikrina ar per paskutines 24h nebuvo uzklausos su tuo paciu el. pastu
+### Dubliuotos užklausos
+- Formoje naudojamas `submitting` state kuris neleidžia pakartotinai spausti mygtuko
+- n8n workflow tikrina ar per paskutines 24h nebuvo užklausos su tuo pačiu el. paštu
 
-### Neteisingas el. pastas
+### Neteisingas el. paštas
 - Frontend validacija: HTML5 email input + regex patikrinimas
 - Backend validacija: RFC 5322 formatas
-- Klaidos zinute: "Iveskite teisinga el. pasto adresa"
+- Klaidos žinutė: "Įveskite teisingą el. pašto adresą"
 
-### Trukstami laukai
+### Trūkstami laukai
 - Frontend: required atributas + vizualus indikatorius
-- Backend: grazina 400 status su nurodytais trukstamais laukais
+- Backend: grąžina 400 status su nurodytais trūkstamais laukais
 
 ### Tinklo klaidos
-- Frontend: try/catch aplink fetch, rodo klaidos zinute
-- Retry logika: automatinis pakartojimas 1 karta po 3 sekundziu
-- Jei n8n webhook nepasiekiamas: API route grazina 503, frontend rodo "Bandykite veliau"
+- Frontend: try/catch aplink fetch, rodo klaidos žinutę
+- Retry logika: automatinis pakartojimas 1 kartą po 3 sekundžių
+- Jei n8n webhook nepasiekiamas: API route grąžina 503, frontend rodo "Bandykite vėliau"
 
-### Nevalidi menesinis vartojimas
-- Min: 50 kWh (mazesni neturi prasmes saules elektrinei)
-- Max: 5000 kWh (didesniems reikia individualaus skaiciavimo)
-- Klaidos zinute: "Menesines sanaudos turi buti tarp 50 ir 5000 kWh"
+### Nevalidi mėnesinis vartojimas
+- Min: 50 kWh (mažesni neturi prasmės saulės elektrinei)
+- Max: 5000 kWh (didesniems reikia individualaus skaičiavimo)
+- Klaidos žinutė: "Mėnesinės sąnaudos turi būti tarp 50 ir 5000 kWh"
 
-### Stogo plotas per mazas
-- Minimali rekomenduojama ploto reiksme: galios_kWp * 5 m2 (vienas modulis uzima ~2 m2, bet reikia tarpu)
-- Jei stogo plotas per mazas rekomenduojamai galiai: rodomas ispejimas "Jusu stogo plotas gali buti nepakankamas rekomenduojamai galiai. Susisieksime del detalesnes analaizes."
+### Stogo plotas per mažas
+- Minimali rekomenduojama ploto reikšmė: galios_kWp * 5 m2 (vienas modulis užima ~2 m2, bet reikia tarpų)
+- Jei stogo plotas per mažas rekomenduojamai galiai: rodomas įspėjimas "Jūsų stogo plotas gali būti nepakankamas rekomenduojamai galiai. Susisieksime dėl detalesnės analizės."

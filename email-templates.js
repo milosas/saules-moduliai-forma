@@ -57,10 +57,10 @@ function generateD0Email(data) {
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 12px 0; color: #001959; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">APVA Subsidija</p>
                     <p style="margin: 0 0 8px 0; color: #1a1a2e; font-size: 15px; line-height: 1.6;">
-                      Valstybes parama saules elektrinems - iki <strong>255 EUR/kWp</strong>.
+                      Valstybes parama saulės elektrinėms - iki <strong>255 EUR/kWp</strong>.
                     </p>
                     <p style="margin: 0; color: #1a1a2e; font-size: 15px; line-height: 1.6;">
-                      Jusu sistemai (${rekomenduojamaGalia} kWp) galima subsidija: <strong>${apvaSubsidija} &euro;</strong>
+                      Jūsų sistemai (${rekomenduojamaGalia} kWp) galima subsidija: <strong>${apvaSubsidija} &euro;</strong>
                     </p>
                   </td>
                 </tr>
@@ -73,7 +73,7 @@ function generateD0Email(data) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jusu saules elektrines pasiulymas</title>
+  <title>Jūsų saulės elektrinės pasiūlymas</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif; background-color: #f4f4f4;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">
@@ -85,7 +85,7 @@ function generateD0Email(data) {
           <tr>
             <td style="background: linear-gradient(135deg, #001959 0%, #055d98 100%); padding: 40px 30px; text-align: center;">
               <img src="https://ldaenergia.lt/wp-content/uploads/2025/03/logo-white-2.svg" alt="LDA Energija" style="max-width: 200px; height: auto; margin-bottom: 12px;">
-              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Saules energijos sprendimai</p>
+              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Saulės energijos sprendimai</p>
             </td>
           </tr>
 
@@ -93,7 +93,7 @@ function generateD0Email(data) {
           <tr>
             <td style="background-color: #e8f0ff; padding: 16px 30px; text-align: center; border-bottom: 3px solid #055d98;">
               <p style="margin: 0; color: #1a1a2e; font-size: 14px; font-weight: 600;">
-                3000+ irengutu sistemu &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
+                3000+ įrengtų sistemų &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
               </p>
             </td>
           </tr>
@@ -103,7 +103,7 @@ function generateD0Email(data) {
             <td style="padding: 40px 30px 20px 30px;">
               <h2 style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 24px; font-weight: 700;">Sveiki, ${vardas}!</h2>
               <p style="margin: 0; color: #4a4a6a; font-size: 16px; line-height: 1.6;">
-                Dekojame uz uzklausa. Pagal Jusu pateiktus parametrus parinkome <strong>optimalius saules elektrines sprendimus</strong>, atitinkancius Jusu poreikius.
+                Dėkojame už užklausą. Pagal Jūsų pateiktus parametrus parinkome <strong>optimalius saulės elektrinės sprendimus</strong>, atitinkancius Jūsų poreikius.
               </p>
             </td>
           </tr>
@@ -114,7 +114,7 @@ function generateD0Email(data) {
               <table role="presentation" style="width: 100%; background: linear-gradient(135deg, #e8f0ff 0%, #dde8ff 100%); border-radius: 12px; border-left: 4px solid #055d98;">
                 <tr>
                   <td style="padding: 20px 24px;">
-                    <p style="margin: 0 0 12px 0; color: #001959; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Jusu parametrai</p>
+                    <p style="margin: 0 0 12px 0; color: #001959; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Jūsų parametrai</p>
                     <table role="presentation" style="width: 100%;">
                       <tr>
                         <td style="padding: 4px 0; color: #1a1a2e; font-size: 15px;">Menesinis vartojimas:</td>
@@ -196,7 +196,7 @@ function generateD0Email(data) {
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 12px 0; color: #fd6d15; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Eksperto rekomendacija</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Rekomenduojame <strong>${rekomenduojamaGalia} kWp</strong> saules elektrine, kuri pilnai padengs Jusu metinius elektros poreikius. Su APVA subsidija investicija atsipirks greiciau.
+                      Rekomenduojame <strong>${rekomenduojamaGalia} kWp</strong> saulės elektrinė, kuri pilnai padengs Jūsų metinius elektros poreikius. Su APVA subsidija investicija atsipirks greiciau.
                     </p>
                   </td>
                 </tr>
@@ -216,8 +216,8 @@ function generateD0Email(data) {
                       <tr>
                         <td style="padding: 20px; text-align: center;">
                           <div style="font-size: 32px; margin-bottom: 8px;">&#9728;&#65039;</div>
-                          <p style="margin: 0 0 8px 0; color: #1a1a2e; font-size: 15px; font-weight: 700;">3000+ irengutu sistemu</p>
-                          <p style="margin: 0; color: #4a4a6a; font-size: 13px; line-height: 1.5;">Didele patirtis saules energetikoje</p>
+                          <p style="margin: 0 0 8px 0; color: #1a1a2e; font-size: 15px; font-weight: 700;">3000+ įrengtų sistemų</p>
+                          <p style="margin: 0; color: #4a4a6a; font-size: 13px; line-height: 1.5;">Didele patirtis saulės energetikoje</p>
                         </td>
                       </tr>
                     </table>
@@ -269,7 +269,7 @@ function generateD0Email(data) {
                 <tr>
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 8px 0; color: #1a1a2e; font-size: 15px; line-height: 1.7; font-style: italic;">
-                      "Saules elektrine irengta per 2 dienas, viskas sutvarkyta profesionaliai. Po pirmu metu elektros saskaita sumazejo 75%! Labai rekomenduoju LDA Energija."
+                      "Saulės elektrinė irengta per 2 dienas, viskas sutvarkyta profesionaliai. Po pirmu metu elektros sąskaita sumažėjo 75%! Labai rekomenduoju LDA Energija."
                     </p>
                     <p style="margin: 0; color: #055d98; font-size: 13px; font-weight: 700;">&mdash; Tomas K., Kaunas</p>
                   </td>
@@ -290,7 +290,7 @@ function generateD0Email(data) {
                   </td>
                 </tr>
               </table>
-              <p style="margin: 16px 0 0 0; color: #4a4a6a; font-size: 14px;">Arba atsakykite i si laiska &ndash; atsakysime per kelias valandas</p>
+              <p style="margin: 16px 0 0 0; color: #4a4a6a; font-size: 14px;">Arba atsakykite į šį laišką &ndash; atsakysime per kelias valandas</p>
             </td>
           </tr>
 
@@ -304,7 +304,7 @@ function generateD0Email(data) {
                 El. p.: info@ldaenergia.lt
               </p>
               <p style="margin: 0; color: #a8b8d8; font-size: 12px; line-height: 1.5;">
-                LDA Energija &middot; Aido g. 6, Giraite, LT54310, Kauno r.<br>
+                LDA Energija &middot; Aido g. 6, Giraitė, LT54310, Kauno r.<br>
                 <a href="https://ldaenergia.lt" style="color: #a8b8d8;">ldaenergia.lt</a>
               </p>
             </td>
@@ -319,7 +319,7 @@ function generateD0Email(data) {
 }
 
 // ============================================================
-// D1 - 5 saules energijos privalumai (Day 1)
+// D1 - 5 saulės energijos privalumai (Day 1)
 // ============================================================
 function generateD1Email(data) {
   const {
@@ -331,7 +331,7 @@ function generateD1Email(data) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>5 priezastys rinktis saules elektrine</title>
+  <title>5 priežastys rinktis saulės elektrinę</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif; background-color: #f4f4f4;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">
@@ -343,7 +343,7 @@ function generateD1Email(data) {
           <tr>
             <td style="background: linear-gradient(135deg, #001959 0%, #055d98 100%); padding: 40px 30px; text-align: center;">
               <img src="https://ldaenergia.lt/wp-content/uploads/2025/03/logo-white-2.svg" alt="LDA Energija" style="max-width: 200px; height: auto; margin-bottom: 12px;">
-              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Ismani energija jusu namams</p>
+              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Išmani energija jūsų namams</p>
             </td>
           </tr>
 
@@ -351,7 +351,7 @@ function generateD1Email(data) {
           <tr>
             <td style="background-color: #e8f0ff; padding: 16px 30px; text-align: center; border-bottom: 3px solid #055d98;">
               <p style="margin: 0; color: #1a1a2e; font-size: 14px; font-weight: 600;">
-                3000+ irengutu sistemu &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
+                3000+ įrengtų sistemų &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
               </p>
             </td>
           </tr>
@@ -361,7 +361,7 @@ function generateD1Email(data) {
             <td style="padding: 40px 30px 20px 30px;">
               <h2 style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 24px; font-weight: 700;">Sveiki, ${vardas}!</h2>
               <p style="margin: 0; color: #4a4a6a; font-size: 16px; line-height: 1.6;">
-                Jau issiunteme jums saules elektrines pasiulyma. Norime trumpai papasakoti, <strong>kodel saules elektrine yra iskirtine investicija</strong> i jusu namu energetini nepriklausomuma.
+                Jau išsiuntėme jums saulės elektrinės pasiūlymą. Norime trumpai papasakoti, <strong>kodėl saulės elektrinė yra išskirtinė investicija</strong> i jūsų namų energetinį nepriklausomumą.
               </p>
             </td>
           </tr>
@@ -369,7 +369,7 @@ function generateD1Email(data) {
           <!-- Benefits Section -->
           <tr>
             <td style="padding: 0 30px 30px 30px;">
-              <h3 style="margin: 0 0 24px 0; color: #1a1a2e; font-size: 20px; font-weight: 700; text-align: center;">5 priezastys rinktis saules elektrine</h3>
+              <h3 style="margin: 0 0 24px 0; color: #1a1a2e; font-size: 20px; font-weight: 700; text-align: center;">5 priežastys rinktis saulės elektrinę</h3>
 
               <!-- Benefit 1 -->
               <table role="presentation" style="width: 100%; margin-bottom: 16px; background: linear-gradient(135deg, #fff5eb 0%, #ffe8d6 100%); border-radius: 12px; border-left: 4px solid #fd6d15;">
@@ -378,9 +378,9 @@ function generateD1Email(data) {
                     <div style="font-size: 40px;">&#9889;</div>
                   </td>
                   <td style="padding: 24px 24px 24px 16px;">
-                    <p style="margin: 0 0 8px 0; color: #fd6d15; font-size: 16px; font-weight: 700;">Energijos nepriklausomybe</p>
+                    <p style="margin: 0 0 8px 0; color: #fd6d15; font-size: 16px; font-weight: 700;">Energijos nepriklausomybė</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Gaminkite savo elektra tiesiogiai is saules. Mazinkite priklausomybe nuo tinklo ir augancio elektros tarifai. Jusu stogas tampa jusu elektrine.
+                      Gaminkite savo elektrą tiesiogiai iš saulės. Mazinkite priklausomybe nuo tinklo ir augancio elektros tarifai. Jūsų stogas tampa jūsų elektrine.
                     </p>
                   </td>
                 </tr>
@@ -393,9 +393,9 @@ function generateD1Email(data) {
                     <div style="font-size: 40px;">&#128176;</div>
                   </td>
                   <td style="padding: 24px 24px 24px 16px;">
-                    <p style="margin: 0 0 8px 0; color: #055d98; font-size: 16px; font-weight: 700;">Elektros saskaitu mazinimas iki 80%</p>
+                    <p style="margin: 0 0 8px 0; color: #055d98; font-size: 16px; font-weight: 700;">Elektros sąskaitų mažinimas iki 80%</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Saules elektrine gamina nemokama elektra dienos metu. Su kaupikliu galite naudoti saules energija ir vakare. Investicija atsipirks per 5-7 metus, o sistema veiks 25+ metus.
+                      Saulės elektrinė gamina nemokamą elektrą dienos metu. Su kaupikliu galite naudoti saulės energiją ir vakare. Investicija atsipirks per 5–7 metus, o sistema veiks 25+ metus.
                     </p>
                   </td>
                 </tr>
@@ -410,7 +410,7 @@ function generateD1Email(data) {
                   <td style="padding: 24px 24px 24px 16px;">
                     <p style="margin: 0 0 8px 0; color: #fd6d15; font-size: 16px; font-weight: 700;">APVA subsidija &ndash; valstybes parama iki 255 EUR/kWp</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Aplinkos projektu valdymo agentura (APVA) suteikia subsidijas fiziniams asmenims. Tai reiskmingai sumazina pradine investicija ir pagreitina atsipirkima.
+                      Aplinkos projektų valdymo agentūra (APVA) suteikia subsidijas fiziniams asmenims. Tai reikšmingai sumažina pradinę investiciją ir pagreitina atsipirkima.
                     </p>
                   </td>
                 </tr>
@@ -423,9 +423,9 @@ function generateD1Email(data) {
                     <div style="font-size: 40px;">&#127793;</div>
                   </td>
                   <td style="padding: 24px 24px 24px 16px;">
-                    <p style="margin: 0 0 8px 0; color: #055d98; font-size: 16px; font-weight: 700;">Ekologiska energija &ndash; mazinkite CO2 pedsaka</p>
+                    <p style="margin: 0 0 8px 0; color: #055d98; font-size: 16px; font-weight: 700;">Ekologiška energija &ndash; mažinkite CO2 pėdsaką</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Saules energija yra svari ir atsinaujinanti. Kiekvienas kWh pagamintas is saules sumazina CO2 emisijas. Prisidekite prie svaresnes aplinkos ateities kartoms.
+                      Saulės energija yra švari ir atsinaujinanti. Kiekvienas kWh pagamintas iš saulės sumažina CO2 emisijas. Prisidekite prie svaresnes aplinkos ateities kartoms.
                     </p>
                   </td>
                 </tr>
@@ -438,9 +438,9 @@ function generateD1Email(data) {
                     <div style="font-size: 40px;">&#127968;</div>
                   </td>
                   <td style="padding: 24px 24px 24px 16px;">
-                    <p style="margin: 0 0 8px 0; color: #fd6d15; font-size: 16px; font-weight: 700;">Nekilnojamojo turto vertes didinimas</p>
+                    <p style="margin: 0 0 8px 0; color: #fd6d15; font-size: 16px; font-weight: 700;">Nekilnojamojo turto vertės didinimas</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Namas su saules elektrine yra patrauklesnis pirkejams. Tyrimai rodo, kad tokiu namu verte padideja 3-5%. Tai investicija, kuri didina jusu turto verte.
+                      Namas su saulės elektrinė yra patrauklesnis pirkėjams. Tyrimai rodo, kad tokių namų vertė padidėja 3-5%. Tai investicija, kuri didina jūsų turto verte.
                     </p>
                   </td>
                 </tr>
@@ -454,12 +454,12 @@ function generateD1Email(data) {
               <table role="presentation" style="width: 100%; background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%); border-radius: 12px; border-left: 4px solid #1a1a2e;">
                 <tr>
                   <td style="padding: 24px;">
-                    <p style="margin: 0 0 12px 0; color: #1a1a2e; font-size: 16px; font-weight: 700;">Kaip veikia saules elektrine?</p>
+                    <p style="margin: 0 0 12px 0; color: #1a1a2e; font-size: 16px; font-weight: 700;">Kaip veikia saulės elektrinė?</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.8;">
-                      1. <strong>Saules moduliai</strong> ant stogo pavercia saules sviesa nuolatine srove (DC).<br>
-                      2. <strong>Inverteris</strong> konvertuoja DC i kintamaja srove (AC), kuria naudoja jusu namai.<br>
-                      3. <strong>Pertekline energija</strong> atiduodama i tinkla arba kaupiama baterijoje.<br>
-                      4. <strong>Naktimis ir debesuotu dienu metu</strong> energija imama is tinklo arba kaupiklio.
+                      1. <strong>Saulės moduliai</strong> ant stogo paverčia saulės šviesą nuolatinę srovę (DC).<br>
+                      2. <strong>Inverteris</strong> konvertuoja DC į kintamąją srovę (AC), kuria naudoja jūsų namai.<br>
+                      3. <strong>Perteklinė energija</strong> atiduodama į tinklą arba kaupiama baterijoje.<br>
+                      4. <strong>Naktimis ir debesuotu dienu metu</strong> energija imama iš tinklo arba kaupiklio.
                     </p>
                   </td>
                 </tr>
@@ -470,17 +470,17 @@ function generateD1Email(data) {
           <!-- CTA Button -->
           <tr>
             <td style="padding: 0 30px 40px 30px; text-align: center;">
-              <p style="margin: 0 0 20px 0; color: #4a4a6a; font-size: 16px;">Turite klausimu? Mielai atsakysime!</p>
+              <p style="margin: 0 0 20px 0; color: #4a4a6a; font-size: 16px;">Turite klausimų? Mielai atsakysime!</p>
               <table role="presentation" style="margin: 0 auto;">
                 <tr>
                   <td style="background-color: #fd6d15; border-radius: 8px; box-shadow: 0 4px 16px rgba(253, 109, 21, 0.3);">
                     <a href="tel:+37063082999" style="display: inline-block; padding: 16px 40px; color: #ffffff; text-decoration: none; font-size: 16px; font-weight: 700; letter-spacing: 0.3px;">
-                      Gauti pasiulyma
+                      Gauti pasiūlymą
                     </a>
                   </td>
                 </tr>
               </table>
-              <p style="margin: 16px 0 0 0; color: #4a4a6a; font-size: 14px;">Arba atsakykite i si laiska</p>
+              <p style="margin: 16px 0 0 0; color: #4a4a6a; font-size: 14px;">Arba atsakykite į šį laišką</p>
             </td>
           </tr>
 
@@ -494,7 +494,7 @@ function generateD1Email(data) {
                 El. p.: info@ldaenergia.lt
               </p>
               <p style="margin: 0; color: #a8b8d8; font-size: 12px; line-height: 1.5;">
-                LDA Energija &middot; Aido g. 6, Giraite, LT54310, Kauno r.<br>
+                LDA Energija &middot; Aido g. 6, Giraitė, LT54310, Kauno r.<br>
                 <a href="https://ldaenergia.lt" style="color: #a8b8d8;">ldaenergia.lt</a>
               </p>
             </td>
@@ -509,12 +509,12 @@ function generateD1Email(data) {
 }
 
 // ============================================================
-// D3 - Specialus pasiulymas + APVA (Day 3)
+// D3 - Specialus pasiūlymas + APVA (Day 3)
 // ============================================================
 function generateD3Email(data) {
   const {
     vardas = 'Kliente',
-    tipas = 'Saules elektrine',
+    tipas = 'Saulės elektrinė',
     rekomenduojamaGalia = 0,
     topProduktas = {},
     originalKaina = 0,
@@ -563,7 +563,7 @@ function generateD3Email(data) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Specialus pasiulymas -5%</title>
+  <title>Specialus pasiūlymas -5%</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif; background-color: #f4f4f4;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">
@@ -579,7 +579,7 @@ function generateD3Email(data) {
               </div>
               <br>
               <img src="https://ldaenergia.lt/wp-content/uploads/2025/03/logo-white-2.svg" alt="LDA Energija" style="max-width: 200px; height: auto; margin-bottom: 12px;">
-              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Ekskluzyvus pasiulymas jums</p>
+              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Ekskluzyvus pasiūlymas jums</p>
             </td>
           </tr>
 
@@ -587,7 +587,7 @@ function generateD3Email(data) {
           <tr>
             <td style="background-color: #e8f0ff; padding: 16px 30px; text-align: center; border-bottom: 3px solid #055d98;">
               <p style="margin: 0; color: #1a1a2e; font-size: 14px; font-weight: 600;">
-                3000+ irengutu sistemu &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
+                3000+ įrengtų sistemų &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
               </p>
             </td>
           </tr>
@@ -597,7 +597,7 @@ function generateD3Email(data) {
             <td style="padding: 40px 30px 20px 30px;">
               <h2 style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 24px; font-weight: 700;">Sveiki, ${vardas}!</h2>
               <p style="margin: 0; color: #4a4a6a; font-size: 16px; line-height: 1.6;">
-                Dekojame uz susidomejima musu pasiulymu. Norime padaryti sprendima dar lengvesni &ndash; <strong>specialiai jums siulome 5% nuolaida</strong> jusu saules elektrinei.
+                Dėkojame už susidomėjimą mūsų pasiūlymu. Norime padaryti sprendimą dar lengvesnį &ndash; <strong>specialiai jums siūlome 5% nuolaidą</strong> jūsų saulės elektrinei.
               </p>
             </td>
           </tr>
@@ -611,7 +611,7 @@ function generateD3Email(data) {
                     <div style="font-size: 72px; font-weight: 700; color: #ffffff; line-height: 1; margin-bottom: 12px;">-5%</div>
                     <p style="margin: 0 0 8px 0; color: #fff5eb; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Speciali nuolaida</p>
                     <p style="margin: 0; color: #ffffff; font-size: 16px; line-height: 1.5;">
-                      Jusu saules elektrinei &ndash; ${tipas}
+                      Jūsų saulės elektrinei &ndash; ${tipas}
                     </p>
                   </td>
                 </tr>
@@ -677,7 +677,7 @@ function generateD3Email(data) {
                 El. p.: info@ldaenergia.lt
               </p>
               <p style="margin: 0; color: #a8b8d8; font-size: 12px; line-height: 1.5;">
-                LDA Energija &middot; Aido g. 6, Giraite, LT54310, Kauno r.<br>
+                LDA Energija &middot; Aido g. 6, Giraitė, LT54310, Kauno r.<br>
                 <a href="https://ldaenergia.lt" style="color: #a8b8d8;">ldaenergia.lt</a>
               </p>
             </td>
@@ -704,7 +704,7 @@ function generateD5Email(data) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Priminimas: jusu saules elektrines pasiulymas</title>
+  <title>Priminimas: jūsų saulės elektrinės pasiūlymas</title>
 </head>
 <body style="margin: 0; padding: 0; font-family: 'Segoe UI', 'Open Sans', Arial, sans-serif; background-color: #f4f4f4;">
   <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">
@@ -716,7 +716,7 @@ function generateD5Email(data) {
           <tr>
             <td style="background: linear-gradient(135deg, #001959 0%, #055d98 100%); padding: 40px 30px; text-align: center;">
               <img src="https://ldaenergia.lt/wp-content/uploads/2025/03/logo-white-2.svg" alt="LDA Energija" style="max-width: 200px; height: auto; margin-bottom: 12px;">
-              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Saules energijos sprendimai</p>
+              <p style="margin: 10px 0 0 0; color: #c5d8f0; font-size: 16px;">Saulės energijos sprendimai</p>
             </td>
           </tr>
 
@@ -724,7 +724,7 @@ function generateD5Email(data) {
           <tr>
             <td style="background-color: #e8f0ff; padding: 16px 30px; text-align: center; border-bottom: 3px solid #055d98;">
               <p style="margin: 0; color: #1a1a2e; font-size: 14px; font-weight: 600;">
-                3000+ irengutu sistemu &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
+                3000+ įrengtų sistemų &middot; Sungrow &amp; Huawei partneriai &middot; APVA subsidija
               </p>
             </td>
           </tr>
@@ -734,7 +734,7 @@ function generateD5Email(data) {
             <td style="padding: 40px 30px 20px 30px;">
               <h2 style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 24px; font-weight: 700;">Sveiki, ${vardas}!</h2>
               <p style="margin: 0; color: #4a4a6a; font-size: 16px; line-height: 1.6;">
-                Norime priminti apie jusu saules elektrines pasiulyma. Suprantame, kad sprendimui reikia laiko, todel norime suteikti visa reikiama informacija.
+                Norime priminti apie jūsų saulės elektrinės pasiūlymą. Suprantame, kad sprendimui reikia laiko, todėl norime suteikti visą reikiamą informaciją.
               </p>
             </td>
           </tr>
@@ -746,7 +746,7 @@ function generateD5Email(data) {
                 <tr>
                   <td style="padding: 30px; text-align: center;">
                     <div style="font-size: 48px; font-weight: 700; color: #001959; line-height: 1; margin-bottom: 8px;">3000+</div>
-                    <p style="margin: 0; color: #055d98; font-size: 18px; font-weight: 600;">namu jau naudoja saules energija su LDA Energija</p>
+                    <p style="margin: 0; color: #055d98; font-size: 18px; font-weight: 600;">namų jau naudoja saulės energiją su LDA Energija</p>
                   </td>
                 </tr>
               </table>
@@ -760,7 +760,7 @@ function generateD5Email(data) {
                 <tr>
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 8px 0; color: #1a1a2e; font-size: 15px; line-height: 1.7; font-style: italic;">
-                      "Per pirmuosius metus elektros saskaita sumazejo 78%. Saules elektrine buvo viena geriausia investicija, kuria padariau. LDA Energija komanda profesionali ir atsakinga."
+                      "Per pirmuosius metus elektros sąskaita sumažėjo 78%. Saulės elektrinė buvo viena geriausia investicija, kurią padariau. LDA Energija komanda profesionali ir atsakinga."
                     </p>
                     <p style="margin: 0; color: #fd6d15; font-size: 13px; font-weight: 700;">&mdash; Andrius M., Vilnius</p>
                   </td>
@@ -777,7 +777,7 @@ function generateD5Email(data) {
                   <td style="padding: 24px;">
                     <p style="margin: 0 0 12px 0; color: #1a1a2e; font-size: 16px; font-weight: 700;">Nuolaidos galiojimas</p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Primename, kad musu specialus <strong>-5% nuolaidos pasiulymas</strong> vis dar gali buti aktualus. Susisiekite su mumis ir mes uztikrinsime geriausia kaina jusu saules elektrinei.
+                      Primename, kad mūsų specialus <strong>-5% nuolaidos pasiūlymas</strong> vis dar gali buti aktualus. Susisiekite su mumis ir mes uztikrinsime geriausia kaina jūsų saulės elektrinei.
                     </p>
                   </td>
                 </tr>
@@ -792,10 +792,10 @@ function generateD5Email(data) {
                 <tr>
                   <td style="padding: 24px; text-align: center;">
                     <p style="margin: 0 0 12px 0; color: #1a1a2e; font-size: 16px; line-height: 1.6;">
-                      <strong>Tai paskutinis musu priminimas.</strong>
+                      <strong>Tai paskutinis mūsų priminimas.</strong>
                     </p>
                     <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                      Daugiau netrukdysime. Bet atsiminkite &ndash; <strong>musu durys visada atviros</strong>. Galite kreiptis bet kada, kai tik busite pasirenge.
+                      Daugiau netrukdysime. Bet atsiminkite &ndash; <strong>mūsų durys visada atviros</strong>. Galite kreiptis bet kada, kai tik busite pasirenge.
                     </p>
                   </td>
                 </tr>
@@ -806,7 +806,7 @@ function generateD5Email(data) {
           <!-- CTA Button -->
           <tr>
             <td style="padding: 0 30px 30px 30px; text-align: center;">
-              <p style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 16px; font-weight: 600;">Turite klausimu? Rasykite arba skambinkite</p>
+              <p style="margin: 0 0 16px 0; color: #1a1a2e; font-size: 16px; font-weight: 600;">Turite klausimų? Rasykite arba skambinkite</p>
               <table role="presentation" style="margin: 0 auto;">
                 <tr>
                   <td style="background-color: #fd6d15; border-radius: 8px; box-shadow: 0 4px 16px rgba(253, 109, 21, 0.3);">
@@ -827,7 +827,7 @@ function generateD5Email(data) {
           <tr>
             <td style="padding: 0 30px 40px 30px; text-align: center;">
               <p style="margin: 0; color: #4a4a6a; font-size: 15px; line-height: 1.6;">
-                Linkime sekmes priimant sprendima!<br>
+                Linkime sėkmės priimant sprendima!<br>
                 <strong>LDA Energija komanda</strong>
               </p>
             </td>
@@ -843,7 +843,7 @@ function generateD5Email(data) {
                 El. p.: info@ldaenergia.lt
               </p>
               <p style="margin: 0; color: #a8b8d8; font-size: 12px; line-height: 1.5;">
-                LDA Energija &middot; Aido g. 6, Giraite, LT54310, Kauno r.<br>
+                LDA Energija &middot; Aido g. 6, Giraitė, LT54310, Kauno r.<br>
                 <a href="https://ldaenergia.lt" style="color: #a8b8d8;">ldaenergia.lt</a>
               </p>
             </td>

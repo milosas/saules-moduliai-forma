@@ -2,7 +2,7 @@
 
 ## Tikslas
 
-Teikti klientams 24/7 pagalba per AI chatbota svetaineje. Chatbotas atsako i DUK, rekomenduoja produktus su nuotraukomis ir kainomis, skaiciuoja saules sistemos galia, ir perduoda sudetingus atvejus konsultantui.
+Teikti klientams 24/7 pagalbą per AI chatbotą svetainėje. Chatbotas atsako į DUK, rekomenduoja produktus su nuotraukomis ir kainomis, skaičiuoja saulės sistemos galią, ir perduoda sudėtingus atvejus konsultantui.
 
 ---
 
@@ -10,20 +10,20 @@ Teikti klientams 24/7 pagalba per AI chatbota svetaineje. Chatbotas atsako i DUK
 
 ### Frontend komponentai
 - `components/chatbot/ChatWidget.tsx` - Floating mygtukas + chat langas
-- `components/chatbot/ChatWindow.tsx` - Pagrindinis chat langas (header, zinutes, input)
-- `components/chatbot/ChatMessage.tsx` - Zinutes burbulas
-- `components/chatbot/ProductCard.tsx` - Produkto kortele (nuotrauka, specs, kaina)
-- `components/chatbot/CalculationResult.tsx` - Galios skaiciavimo rezultatas
-- `components/chatbot/EscalationCard.tsx` - Kontaktu forma + telefonai
-- `components/chatbot/TypingIndicator.tsx` - Animuoti taskai
+- `components/chatbot/ChatWindow.tsx` - Pagrindinis chat langas (header, žinutės, input)
+- `components/chatbot/ChatMessage.tsx` - Žinutės burbulas
+- `components/chatbot/ProductCard.tsx` - Produkto kortelė (nuotrauka, specs, kaina)
+- `components/chatbot/CalculationResult.tsx` - Galios skaičiavimo rezultatas
+- `components/chatbot/EscalationCard.tsx` - Kontaktų forma + telefonai
+- `components/chatbot/TypingIndicator.tsx` - Animuoti taškai
 
 ### API Routes
 - `app/api/chat/route.ts` - Pagrindinis chat endpoint (POST, SSE streaming)
-- `app/api/chat/escalate/route.ts` - Escalation kontaktu issaugojimas
+- `app/api/chat/escalate/route.ts` - Escalation kontaktų išsaugojimas
 
 ### Lib failai
 - `lib/chatbot-config.ts` - System prompt, tool definitions, konstantos
-- `lib/chatbot-tools.ts` - Produktu gavimas is Google Sheets, galios skaiciavimas
+- `lib/chatbot-tools.ts` - Produktų gavimas iš Google Sheets, galios skaičiavimas
 
 ### Integracija
 - ChatWidget importuotas `layout.tsx` - rodomas visuose puslapiuose
@@ -33,21 +33,21 @@ Teikti klientams 24/7 pagalba per AI chatbota svetaineje. Chatbotas atsako i DUK
 ## AI Backend
 
 - **Modelis:** OpenAI GPT-4o-mini
-- **Temperatura:** 0.7
+- **Temperatūra:** 0.7
 - **Max tokens:** 1000
 
-### Tool Calling (3 irankiai)
-1. `get_products` - gauna produktus is Google Sheets pagal tipa ir galia
-2. `calculate_system` - skaiciuoja rekomenduojama saules sistemos galia
-3. `escalate_to_human` - perduoda pokalbio konsultantui
+### Tool Calling (3 įrankiai)
+1. `get_products` - gauna produktus iš Google Sheets pagal tipą ir galią
+2. `calculate_system` - skaičiuoja rekomenduojamą saulės sistemos galią
+3. `escalate_to_human` - perduoda pokalbį konsultantui
 
-### Produktu cache
+### Produktų cache
 - In-memory cache su 15 min TTL
-- Visi produktai skaitomi is Google Sheets "Produktai" lapo
+- Visi produktai skaitomi iš Google Sheets "Produktai" lapo
 
 ---
 
-## Konfiguracija
+## Konfigūracija
 
 ### Environment variables (frontend/.env.local)
 ```
@@ -56,34 +56,34 @@ N8N_CHAT_ESCALATION_WEBHOOK=    # n8n webhook URL escalation duomenims (neprival
 ```
 
 ### Limitas
-- Max 30 ziuciu per sesija
-- Pokalbio istorija: paskutines 20 ziuciu siunciamos AI
+- Max 30 žinučių per sesiją
+- Pokalbio istorija: paskutinės 20 žinučių siunčiamos AI
 
 ---
 
 ## Escalation logika
 
 Chatbotas perduoda konsultantui kai:
-- Klientas praso zmogaus
+- Klientas prašo žmogaus
 - AI negali atsakyti
-- Klientas nori oficialaus pasiulymo
-- Klientas pranesu apie serviso problema
+- Klientas nori oficialaus pasiūlymo
+- Klientas praneša apie serviso problemą
 
-Escalation korteleje:
-- Mygtukais "Skambinti" (tel: link) ir "El. pastas" (mailto: link)
-- Kontaktu forma (vardas, telefonas, zinute)
-- Duomenys siunciami i n8n webhook (jei sukonfigruotas)
+Escalation kortelėje:
+- Mygtukais "Skambinti" (tel: link) ir "El. paštas" (mailto: link)
+- Kontaktų forma (vardas, telefonas, žinutė)
+- Duomenys siunčiami į n8n webhook (jei sukonfigūruotas)
 
 ---
 
 ## Edge Cases
 
 ### OpenAI API klaida
-- Rodomas klaidos pranesimas su telefono numeriu
+- Rodomas klaidos pranešimas su telefono numeriu
 
 ### Google Sheets nepasiekiamas
-- Produktu cache naudojamas jei dar galioja
-- Kitu atveju AI atsako be produktu korteliu
+- Produktų cache naudojamas jei dar galioja
+- Kitų atveju AI atsako be produktų kortelių
 
 ### Per ilgas pokalbis
-- Po 30 ziuciu rodomas limito pranesimas su kontaktiniu telefonu
+- Po 30 žinučių rodomas limito pranešimas su kontaktiniu telefonu

@@ -82,7 +82,7 @@ export default function UzklausosKortele({ uzklausas, onClose, onPastabosUpdate 
   }
 
   const emailSteps = [
-    { key: "D0", label: "D0 – Pasiūlymas", value: uzklausas.statusas?.toLowerCase().includes("issiust") ? uzklausas.data : "" },
+    { key: "D0", label: "D0 – Pasiūlymas", value: (uzklausas.statusas?.toLowerCase().includes("issiust") || uzklausas.statusas?.toLowerCase().includes("išsiust")) ? uzklausas.data : "" },
     { key: "D1", label: "D1 – Privalumai", value: uzklausas.emailSekpiD1 },
     { key: "D3", label: "D3 – APVA", value: uzklausas.emailSekpiD3 },
     { key: "D5", label: "D5 – Galutinis", value: uzklausas.emailSekpiD5 },

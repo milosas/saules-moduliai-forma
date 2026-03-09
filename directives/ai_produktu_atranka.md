@@ -1,124 +1,124 @@
-# AI Produktu Atranka
+# AI Produktų Atranka
 
 ## Tikslas
 
-Automatiskai atrinkti geriausius saules elektrines komponentus pagal kliento poreikius, naudojant AI (OpenAI GPT) produktu analizei ir rekomendacijoms. Atrinkti modulius, inverterius, kaupiklius ir EV stoteles.
+Automatiškai atrinkti geriausius saulės elektrinės komponentus pagal kliento poreikius, naudojant AI (OpenAI GPT) produktų analizei ir rekomendacijoms. Atrinkti modulius, inverterius, kaupiklius ir EV stoteles.
 
 ---
 
-## Ivestys (Inputs)
+## Įvestys (Inputs)
 
-### Kliento duomenys (is n8n workflow)
+### Kliento duomenys (iš n8n workflow)
 
-| Laukas | Tipas | Aprasymas |
+| Laukas | Tipas | Aprašymas |
 |--------|-------|-----------|
-| tipas | string | namams / verslui / ukiui |
-| menesines_sanaudos_kwh | number | Menesines elektros sanaudos |
-| stogo_orientacija | string | pietus / pieryciu / pietvakriu / rytai / vakarai / kita |
+| tipas | string | namams / verslui / ūkiui |
+| menesines_sanaudos_kwh | number | Mėnesinės elektros sąnaudos |
+| stogo_orientacija | string | pietūs / pietryčių / pietvakrių / rytai / vakarai / kita |
 | stogo_plotas_m2 | number | Stogo plotas kvadratiniais metrais |
 | apskaiciuota_galia_kwp | number | Rekomenduojama galia kWp |
-| moduliu_sk | number | Apskaiciuotas moduliu skaicius |
+| moduliu_sk | number | Apskaičiuotas modulių skaičius |
 | domina_kaupiklis | boolean | Ar domina energijos kaupiklis |
-| domina_ev | boolean | Ar domina EV ikrovimo stotele |
+| domina_ev | boolean | Ar domina EV įkrovimo stotelė |
 | papildoma_info | string | Kliento pageidavimai |
 
-### Produktu duomenu baze (Google Sheets)
+### Produktų duomenų bazė (Google Sheets)
 
-**Produktu tipai ir stulpeliai:**
+**Produktų tipai ir stulpeliai:**
 
-**Modulis (saules panele):**
+**Modulis (saulės panelė):**
 - ID, Tipas (Modulis), Gamintojas, Modelis
 - Galia W, Efektyvumas %, Technologija (mono/poly/bifacial)
 - Matmenys, Svoris kg
-- Gamintojo garantija metu, Galios garantija metu
+- Gamintojo garantija metų, Galios garantija metų
 - Kaina EUR
 - Pastabos, Nuotrauka URL
 
 **Inverteris:**
 - ID, Tipas (Inverteris), Gamintojas, Modelis
 - Max DC galia kW, AC galia kW, Max efektyvumas %
-- MPPT kiekis, Faziskumas (1f/3f)
-- Garantija metu, Kaina EUR
+- MPPT kiekis, Faziškumas (1f/3f)
+- Garantija metų, Kaina EUR
 - Pastabos
 
 **Kaupiklis (baterija):**
 - ID, Tipas (Kaupiklis), Gamintojas, Modelis
-- Talpa kWh, Max iskrovimo galia kW
-- Ciklu skaicius, Garantija metu
+- Talpa kWh, Max iškrovimo galia kW
+- Ciklų skaičius, Garantija metų
 - Kaina EUR, Pastabos
 
-**EV stotele:**
-- ID, Tipas (EV stotele), Gamintojas, Modelis
+**EV stotelė:**
+- ID, Tipas (EV stotelė), Gamintojas, Modelis
 - Max galia kW, Jungtis (Type2/CCS)
-- Smart funkcijos, Garantija metu
+- Smart funkcijos, Garantija metų
 - Kaina EUR, Pastabos
 
 ---
 
-## Irankiai / Skriptai (Tools/Scripts)
+## Įrankiai / Skriptai (Tools/Scripts)
 
-| Irankis | Paskirtis |
+| Įrankis | Paskirtis |
 |---------|-----------|
-| n8n Google Sheets node | Nuskaito produktu duomenis |
-| n8n OpenAI node | AI produktu atranka |
-| n8n Function node | Galios apskaiciavimas ir duomenu transformacija |
+| n8n Google Sheets node | Nuskaito produktų duomenis |
+| n8n OpenAI node | AI produktų atranka |
+| n8n Function node | Galios apskaičiavimas ir duomenų transformacija |
 
 ---
 
 ## Procesas
 
-### 1. Galios apskaiciavimas
+### 1. Galios apskaičiavimas
 
 ```
-Rekomenduojama galia (kWp) = Menesines sanaudos (kWh) x 12 / 1050
+Rekomenduojama galia (kWp) = Mėnesinės sąnaudos (kWh) x 12 / 1050
 ```
 
 Orientacijos koeficientai:
 | Orientacija | Koeficientas |
 |-------------|-------------|
-| Pietus | 1.0 |
-| Pieryciu/Pietvakriu | 0.95 |
+| Pietūs | 1.0 |
+| Pietryčių/Pietvakrių | 0.95 |
 | Rytai/Vakarai | 0.85 |
 | Kita | 0.80 |
 
-**Pavyzdys:** 300 kWh/men, pietu orientacija = 300 * 12 / 1050 = 3.43 kWp
+**Pavyzdys:** 300 kWh/mėn, pietų orientacija = 300 * 12 / 1050 = 3.43 kWp
 
-### 2. Produktu filtravimas (pirmine atranka)
+### 2. Produktų filtravimas (pirminė atranka)
 
-Pries siunciant i AI, filtruojami produktai:
+Prieš siunčiant į AI, filtruojami produktai:
 
 **Moduliai:**
-1. Moduliu sk. * modulio galia W / 1000 turi buti +-20% nuo apskaiciuotos galios kWp
-2. Bendras moduliu plotas turi tilpti i stogo plota
+1. Modulių sk. * modulio galia W / 1000 turi būti +-20% nuo apskaičiuotos galios kWp
+2. Bendras modulių plotas turi tilpti į stogo plotą
 
 **Inverteriai:**
-1. AC galia turi buti >= apskaiciuotos galios kWp
-2. AC galia turi buti <= 1.3 * apskaiciuotos galios kWp (inverteris neturi buti per didelis)
-3. Faziskumas: 1f iki 5 kWp, 3f nuo 5 kWp
+1. AC galia turi būti >= apskaičiuotos galios kWp
+2. AC galia turi būti <= 1.3 * apskaičiuotos galios kWp (inverteris neturi būti per didelis)
+3. Faziškumas: 1f iki 5 kWp, 3f nuo 5 kWp
 
 **Kaupikliai (jei domina):**
-1. Talpa kWh: rekomenduojama 1-2x dienos vartojimas (menesines / 30)
-2. Max iskrovimo galia >= 3 kW
+1. Talpa kWh: rekomenduojama 1-2x dienos vartojimas (mėnesinės / 30)
+2. Max iškrovimo galia >= 3 kW
 
-**EV stoteles (jei domina):**
-1. Visos turimos EV stoteles pateikiamos
+**EV stotelės (jei domina):**
+1. Visos turimos EV stotelės pateikiamos
 
 ### 3. AI atranka (OpenAI)
 
 #### System prompt
 
 ```
-Tu esi saules elektriniu ekspertas Lietuvoje. Tavo uzduotis - is pateiktu produktu atrinkti geriausius variantus klientui ir juos sureitinguoti.
+Tu esi saulės elektrinių ekspertas Lietuvoje. Tavo užduotis - iš pateiktų produktų atrinkti geriausius variantus klientui ir juos sureitinguoti.
 
 Vertinimo kriterijai (svarbumo tvarka):
-1. Galios atitikimas (30%) - moduliu sk. x galia W turi atitikti reikiama kWp
-2. Efektyvumas % (25%) - didesnis efektyvumas = maziau vietos stoge
-3. Kainos ir kokybes santykis (20%) - kaina atsizvelgiant i galimybes
-4. Garantijos trukme (10%) - ilgesne garantija = geriau
-5. Gamintojo patikimumas (10%) - zinomi gamintojai (Sungrow, Huawei, JA Solar, Longi, Canadian Solar)
-6. Suderinamumas (5%) - moduliu ir inverterio suderinamumas
+1. Galios atitikimas (30%) - modulių sk. x galia W turi atitikti reikiamą kWp
+2. Efektyvumas % (25%) - didesnis efektyvumas = mažiau vietos stoge
+3. Kainos ir kokybės santykis (20%) - kaina atsižvelgiant į galimybes
+4. Garantijos trukmė (10%) - ilgesnė garantija = geriau
+5. Gamintojo patikimumas (10%) - žinomi gamintojai (Sungrow, Huawei, JA Solar, Longi, Canadian Solar)
+6. Suderinamumas (5%) - modulių ir inverterio suderinamumas
 
-Pateik rezultata TIKTAI JSON formatu, be jokio papildomo teksto.
+Pateik rezultatą TIKTAI JSON formatu, be jokio papildomo teksto.
 ```
 
 #### User prompt template
@@ -126,13 +126,13 @@ Pateik rezultata TIKTAI JSON formatu, be jokio papildomo teksto.
 ```
 Kliento poreikiai:
 - Tipas: {tipas}
-- Menesines sanaudos: {menesines_sanaudos_kwh} kWh
+- Mėnesinės sąnaudos: {menesines_sanaudos_kwh} kWh
 - Stogo orientacija: {stogo_orientacija}
 - Stogo plotas: {stogo_plotas_m2} m2
 - Reikalinga galia: {apskaiciuota_galia_kwp} kWp
-- Moduliu skaicius: {moduliu_sk}
+- Modulių skaičius: {moduliu_sk}
 - Domina kaupiklis: {domina_kaupiklis}
-- Domina EV stotele: {domina_ev}
+- Domina EV stotelė: {domina_ev}
 - Papildomi pageidavimai: {papildoma_info}
 
 Galimi moduliai:
@@ -144,7 +144,7 @@ Galimi inverteriai:
 {kaupikliu_sekcija}
 {ev_stoteliu_sekcija}
 
-Atrink TOP 3-5 modulius ir 1-2 inverterius. Jei klientas domisi kaupikliu - atrink 1-2 kaupiklius. Jei domisi EV - atrink 1 EV stotele.
+Atrink TOP 3-5 modulius ir 1-2 inverterius. Jei klientas domisi kaupikliu - atrink 1-2 kaupiklius. Jei domisi EV - atrink 1 EV stotelę.
 
 Pateik JSON formatu:
 {
@@ -159,7 +159,7 @@ Pateik JSON formatu:
         "efektyvumas": 22.1,
         "garantija_metu": 25,
         "kaina_eur": 0,
-        "priezastis": "Trumpas paaiskiniimas kodel rekomenduojama"
+        "priezastis": "Trumpas paaiškinimas kodėl rekomenduojama"
       }
     ],
     "inverteriai": [
@@ -205,7 +205,7 @@ Pateik JSON formatu:
         "modelis": "SG5.0RS",
         "galia_kw": 5.0,
         "kaina_eur": 800,
-        "priezastis": "Optimalus galios atitikimas, auksciausia efektyvumas"
+        "priezastis": "Optimalus galios atitikimas, aukščiausia efektyvumas"
       }
     ],
     "kaupikliai": [],
@@ -216,37 +216,37 @@ Pateik JSON formatu:
 
 ---
 
-## Isvestys (Outputs)
+## Išvestys (Outputs)
 
-- Rekomenduojamu produktu sarasas JSON formatu (moduliai, inverteriai, kaupikliai, EV stoteles)
-- Kiekvienas produktas su pozicija, specifikacijomis ir trumpu paaiskinamu
-- Saugoma Google Sheets "Uzklausos" lapo stulpelyje "AI Rekomendacijos"
+- Rekomenduojamų produktų sąrašas JSON formatu (moduliai, inverteriai, kaupikliai, EV stotelės)
+- Kiekvienas produktas su pozicija, specifikacijomis ir trumpu paaiškinimu
+- Saugoma Google Sheets "Užklausos" lapo stulpelyje "AI Rekomendacijos"
 
 ---
 
-## Krasztiniu Atveju Valdymas (Edge Cases)
+## Kraštinių Atvejų Valdymas (Edge Cases)
 
-### Nera atitinkanciu produktu
-- Jei po filtravimo liko < 3 moduliai: isplesti galios diapazono filtra iki +-40% ir bandyti dar karta
-- Jei po filtravimo liko 0 produktu: siusti AI visus turimus modulius ir leisti jam parinkti artimiausia
-- Jei nera tinkamo inverterio: siulyti artimiausia didesni inverteri
+### Nėra atitinkančių produktų
+- Jei po filtravimo liko < 3 moduliai: išplėsti galios diapazono filtrą iki +-40% ir bandyti dar kartą
+- Jei po filtravimo liko 0 produktų: siųsti AI visus turimus modulius ir leisti jam parinkti artimiausią
+- Jei nėra tinkamo inverterio: siūlyti artimiausią didesnį inverterį
 
-### Biudzeto apribojimai
-- Jei kliento papildomoje info minimas biudzetas (pvz. "iki 5000 EUR"), AI atsizvelgia i tai reitinguojant
-- Biudzetas nera grieztas filtras - AI gali rekomenduoti ir brangesnius variantus su paaiskinamu
+### Biudžeto apribojimai
+- Jei kliento papildomoje info minimas biudžetas (pvz. "iki 5000 EUR"), AI atsižvelgia į tai reitinguojant
+- Biudžetas nėra griežtas filtras - AI gali rekomenduoti ir brangesnius variantus su paaiškinimu
 
-### Stogo plotas per mazas
-- Jei stogo plotas netelpa reikiamam moduliu kiekiui: AI rekomenduoja mazesnes galios sistema ir ispeja
-- Alternatyviai siulo aukstesnes galios modulius (pvz. 500W vietoj 445W)
+### Stogo plotas per mažas
+- Jei stogo plotas netelpa reikiamam modulių kiekiui: AI rekomenduoja mažesnės galios sistemą ir įspėja
+- Alternatyviai siūlo aukštesnės galios modulius (pvz. 500W vietoj 445W)
 
 ### AI atsakymo klaidos
-- Jei AI grazina ne JSON: pakartoti uzklausa 1 karta su grieztesu prompt
-- Jei AI grazina maziau nei 3 modulius: priimti kiek grazino
-- Jei AI neatsako per 30s: timeout, grazinti pirminius 3 modulius surikiuotus pagal efektyvuma
+- Jei AI grąžina ne JSON: pakartoti užklausą 1 kartą su griežtesniu prompt
+- Jei AI grąžina mažiau nei 3 modulius: priimti kiek grąžino
+- Jei AI neatsako per 30s: timeout, grąžinti pirminius 3 modulius surikiuotus pagal efektyvumą
 
-### Produktu duomenu bazes atnaujinimas
-- Produktai saugomi Google Sheets atskiuose lapuose: "Moduliai", "Inverteriai", "Kaupikliai", "EV stoteles"
-- Naujus produktus galima prideti tiesiogiai i Google Sheets
-- Butini laukai: ID, Tipas, Gamintojas, Modelis, Galia, Kaina EUR
-- ID formatas: SM-XXX (moduliai), INV-XXX (inverteriai), BAT-XXX (kaupikliai), EV-XXX (EV stoteles)
-- Po pridejimo/atnaujinimo nereikia jokiu papildomu veiksmu - n8n nuskaitys naujausius duomenis automatiskai
+### Produktų duomenų bazės atnaujinimas
+- Produktai saugomi Google Sheets atskiruose lapuose: "Moduliai", "Inverteriai", "Kaupikliai", "EV stotelės"
+- Naujus produktus galima pridėti tiesiogiai į Google Sheets
+- Būtini laukai: ID, Tipas, Gamintojas, Modelis, Galia, Kaina EUR
+- ID formatas: SM-XXX (moduliai), INV-XXX (inverteriai), BAT-XXX (kaupikliai), EV-XXX (EV stotelės)
+- Po pridėjimo/atnaujinimo nereikia jokių papildomų veiksmų - n8n nuskaitys naujausius duomenis automatiškai

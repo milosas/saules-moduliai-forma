@@ -49,7 +49,7 @@ export default function UzklausuLentele({ uzklausos, onSelect }: UzklausuLentele
       return "bg-[#055d98]/10 text-[#055d98] border border-[#055d98]/20";
     if (lower.includes("apdorot") || lower.includes("process"))
       return "bg-amber-50 text-amber-700 border border-amber-200";
-    if (lower.includes("issiust") || lower.includes("sent"))
+    if (lower.includes("issiust") || lower.includes("išsiust") || lower.includes("sent"))
       return "bg-[#83bf25]/10 text-[#5d9e13] border border-[#83bf25]/30";
     return "bg-gray-100 text-gray-500 border border-gray-200";
   };

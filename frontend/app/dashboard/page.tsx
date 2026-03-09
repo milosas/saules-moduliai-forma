@@ -38,6 +38,8 @@ export default function DashboardPage() {
 
   useEffect(() => {
     fetchUzklausos();
+    const interval = setInterval(fetchUzklausos, 30000);
+    return () => clearInterval(interval);
   }, [fetchUzklausos]);
 
   return (

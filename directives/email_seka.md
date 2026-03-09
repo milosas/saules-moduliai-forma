@@ -2,33 +2,33 @@
 
 ## Tikslas
 
-Automatiskai siusti komercini pasiulyma ir follow-up email seka klientui po uzklausos pateikimo, siekiant padidinti konversiju. Saules elektrines pasiulymu seka su LDA Energija branding.
+Automatiškai siųsti komercinį pasiūlymą ir follow-up email seką klientui po užklausos pateikimo, siekiant padidinti konversijų. Saulės elektrinės pasiūlymų seka su LDA Energija branding.
 
 ---
 
-## Ivestys (Inputs)
+## Įvestys (Inputs)
 
 ### Kliento duomenys
 
-| Laukas | Saltinis |
+| Laukas | Šaltinis |
 |--------|---------|
-| Vardas | Uzklausos forma |
-| El. pastas | Uzklausos forma |
-| Tipas | Uzklausos forma (namams/verslui/ukiui) |
-| Menesines sanaudos, galia kWp | Apskaiciuota is formos |
-| Stogo parametrai | Uzklausos forma |
+| Vardas | Užklausos forma |
+| El. paštas | Užklausos forma |
+| Tipas | Užklausos forma (namams/verslui/ūkiui) |
+| Mėnesinės sąnaudos, galia kWp | Apskaičiuota iš formos |
+| Stogo parametrai | Užklausos forma |
 | AI Rekomendacijos | AI atrankos rezultatas |
-| Follow-up datos | Google Sheets "Uzklausos" lapas |
+| Follow-up datos | Google Sheets "Užklausos" lapas |
 
 ---
 
-## Irankiai / Skriptai (Tools/Scripts)
+## Įrankiai / Skriptai (Tools/Scripts)
 
-| Irankis | Paskirtis |
+| Įrankis | Paskirtis |
 |---------|-----------|
 | n8n Gmail node | Email siuntimas |
-| n8n Schedule Trigger | Kas 1 valanda tikrina follow-up datas |
-| n8n Google Sheets node | Skaito/raso follow-up statusus |
+| n8n Schedule Trigger | Kas 1 valandą tikrina follow-up datas |
+| n8n Google Sheets node | Skaito/rašo follow-up statusus |
 | n8n Function node | HTML template generavimas (email-templates.js) |
 
 ---
@@ -37,168 +37,168 @@ Automatiskai siusti komercini pasiulyma ir follow-up email seka klientui po uzkl
 
 ### Email seka (4 email'ai)
 
-#### D0 - Saules elektrines pasiulymas (iskart po formos)
+#### D0 - Saulės elektrinės pasiūlymas (iškart po formos)
 
-**Laikas:** Iskart kai AI atranka baigta (per ~2 min po formos pateikimo)
-**Triggeris:** n8n main workflow - po AI atrankos zingsnio
+**Laikas:** Iškart kai AI atranka baigta (per ~2 min po formos pateikimo)
+**Triggeris:** n8n main workflow - po AI atrankos žingsnio
 
-**Turinio struktura:**
-1. Header su LDA Energija logotipu ant tamsiai melynos gradient (001959 -> 055d98)
-2. Trust bar: "3000+ irengutu sistemu | Sungrow & Huawei partneriai | APVA subsidija"
+**Turinio struktūra:**
+1. Header su LDA Energija logotipu ant tamsiai mėlynos gradient (001959 -> 055d98)
+2. Trust bar: "3000+ įrengtų sistemų | Sungrow & Huawei partneriai | APVA subsidija"
 3. Pasisveikinimas su vardu
-4. Kliento parametru santrauka (menesinis vartojimas, stogo orientacija, stogo plotas)
-5. Rekomenduojama sistema (galia kWp, moduliu sk., metine gamyba, sutaupymas)
+4. Kliento parametrų santrauka (mėnesinis vartojimas, stogo orientacija, stogo plotas)
+5. Rekomenduojama sistema (galia kWp, modulių sk., metinė gamyba, sutaupymas)
 6. APVA subsidija info sekcija (jei klientas domisi)
-7. TOP 3-5 rekomenduojami produktai (lentele): Modulis, Galia W, Efektyvumas %, Garantija, Kaina EUR
-8. CTA mygtukas: "Uzsisakyti konsultacija" (orandzinis #fd6d15)
+7. TOP 3-5 rekomenduojami produktai (lentelė): Modulis, Galia W, Efektyvumas %, Garantija, Kaina EUR
+8. CTA mygtukas: "Užsisakyti konsultaciją" (orandžinis #fd6d15)
 9. Footer su kontaktais (LDA Energija)
 
-**Gmail subject:** "Jusu saules elektrines pasiulymas - {Tipas}"
+**Gmail subject:** "Jūsų saulės elektrinės pasiūlymas - {Tipas}"
 
-**Po issiuntimo:**
-- Google Sheets "Pasiulymo statusas" = "Issiusta"
-- "Follow-up D1" = dabartine data + 1 diena
-- "Follow-up D3" = dabartine data + 3 dienos
-- "Follow-up D5" = dabartine data + 5 dienos
+**Po išsiuntimo:**
+- Google Sheets "Pasiūlymo statusas" = "Išsiųsta"
+- "Follow-up D1" = dabartinė data + 1 diena
+- "Follow-up D3" = dabartinė data + 3 dienos
+- "Follow-up D5" = dabartinė data + 5 dienos
 
 ---
 
-#### D1 - Follow-up #1: 5 saules energijos privalumai
+#### D1 - Follow-up #1: 5 saulės energijos privalumai
 
-**Laikas:** 1 diena po komercinio pasiulymo
-**Triggeris:** n8n Schedule Trigger (kas 1 valanda tikrina)
+**Laikas:** 1 diena po komercinio pasiūlymo
+**Triggeris:** n8n Schedule Trigger (kas 1 valandą tikrina)
 
-**Turinio struktura:**
+**Turinio struktūra:**
 1. Header su LDA Energija logotipu
 2. Trust bar
 3. Pasisveikinimas
 4. 5 privalumai:
-   - Energijos nepriklausomybe - gaminkite savo elektra
-   - Elektros saskaitu mazinimas iki 80%
-   - APVA subsidija - valstybes parama iki 255 EUR/kWp
-   - Ekologiska energija - mazinkite CO2 pedsaka
-   - Nekilnojamojo turto vertes didinimas
-5. "Kaip veikia saules elektrine" sekcija (4 zingsniai)
-6. CTA: "Gauti pasiulyma" (orandzinis #fd6d15)
+   - Energijos nepriklausomybė - gaminkite savo elektrą
+   - Elektros sąskaitų mažinimas iki 80%
+   - APVA subsidija - valstybės parama iki 255 EUR/kWp
+   - Ekologiška energija - mažinkite CO2 pėdsaką
+   - Nekilnojamojo turto vertės didinimas
+5. "Kaip veikia saulės elektrinė" sekcija (4 žingsniai)
+6. CTA: "Gauti pasiūlymą" (orandžinis #fd6d15)
 7. Footer su kontaktais
 
-**Gmail subject:** "5 priezastys rinktis saules elektrine"
+**Gmail subject:** "5 priežastys rinktis saulės elektrinę"
 
-**Po issiuntimo:**
-- Google Sheets "Follow-up D1" = "Issiusta [data]"
+**Po išsiuntimo:**
+- Google Sheets "Follow-up D1" = "Išsiųsta [data]"
 
 ---
 
-#### D3 - Follow-up #2: Specialus pasiulymas + APVA
+#### D3 - Follow-up #2: Specialus pasiūlymas + APVA
 
-**Laikas:** 3 dienos po komercinio pasiulymo
+**Laikas:** 3 dienos po komercinio pasiūlymo
 **Triggeris:** n8n Schedule Trigger
 
-**Turinio struktura:**
+**Turinio struktūra:**
 1. Header su urgency badge "Galioja 48 valandas"
 2. Trust bar
-3. Priminimas apie pradini pasiulyma
-4. **5% nuolaida** jei uzsakymas pateikiamas per 48 valandas
+3. Priminimas apie pradinį pasiūlymą
+4. **5% nuolaida** jei užsakymas pateikiamas per 48 valandas
 5. Didelis nuolaidos badge (-5%)
-6. TOP rekomenduojama konfiguracija su kainos palyginimu (originali vs su nuolaida)
-7. APVA subsidijos skaiciavimas (jei aktualus):
+6. TOP rekomenduojama konfigūracija su kainos palyginimu (originali vs su nuolaida)
+7. APVA subsidijos skaičiavimas (jei aktualus):
    - Sistemos galia kWp
    - Subsidijos norma (iki 255 EUR/kWp)
    - Galima subsidija suma
-   - Galutine kaina su nuolaida ir APVA
-8. CTA: "Uzsisakyti su nuolaida" (orandzinis #fd6d15)
+   - Galutinė kaina su nuolaida ir APVA
+8. CTA: "Užsisakyti su nuolaida" (orandžinis #fd6d15)
 9. Footer su kontaktais
 
-**Gmail subject:** "Specialus pasiulymas: -5% jusu saules elektrinei"
+**Gmail subject:** "Specialus pasiūlymas: -5% jūsų saulės elektrinei"
 
-**Po issiuntimo:**
-- Google Sheets "Follow-up D3" = "Issiusta [data]"
+**Po išsiuntimo:**
+- Google Sheets "Follow-up D3" = "Išsiųsta [data]"
 
 ---
 
 #### D5 - Follow-up #3: Galutinis priminimas
 
-**Laikas:** 5 dienos po komercinio pasiulymo
+**Laikas:** 5 dienos po komercinio pasiūlymo
 **Triggeris:** n8n Schedule Trigger
 
-**Turinio struktura:**
+**Turinio struktūra:**
 1. Header su LDA Energija logotipu
 2. Trust bar
 3. Pasisveikinimas
-4. Priminimas apie pasiulyma
-5. Socialinis irodymas: "3000+ namu jau naudoja saules energija su LDA Energija" (didelis skaicius)
-6. Kliento atsiliepimu citata
+4. Priminimas apie pasiūlymą
+5. Socialinis įrodymas: "3000+ namų jau naudoja saulės energiją su LDA Energija" (didelis skaičius)
+6. Kliento atsiliepimų citata
 7. Nuolaidos galiojimo priminimas
-8. Galutine zinute: "Tai paskutinis musu priminimas"
-9. Paprastas CTA: "Turite klausimu? Rasykite arba skambinkite"
-10. Pilna kontaktine informacija su abiem telefonais:
+8. Galutinė žinutė: "Tai paskutinis mūsų priminimas"
+9. Paprastas CTA: "Turite klausimų? Rašykite arba skambinkite"
+10. Pilna kontaktinė informacija su abiem telefonais:
     - Tel.: +370 630 82999
     - Servisas: +370 636 90999
     - El. p.: info@ldaenergia.lt
 11. Footer su kontaktais
 
-**Gmail subject:** "Priminimas: jusu saules elektrines pasiulymas"
+**Gmail subject:** "Priminimas: jūsų saulės elektrinės pasiūlymas"
 
-**Po issiuntimo:**
-- Google Sheets "Follow-up D5" = "Issiusta [data]"
-- "Pasiulymo statusas" = "Seka baigta"
+**Po išsiuntimo:**
+- Google Sheets "Follow-up D5" = "Išsiųsta [data]"
+- "Pasiūlymo statusas" = "Seka baigta"
 
 ---
 
-### Schedule Trigger konfiguracija
+### Schedule Trigger konfigūracija
 
 ```
 Tipas: Schedule Trigger
-Intervalas: Kas 1 valanda
+Intervalas: Kas 1 valandą
 Darbo laikas: 08:00 - 20:00 (Lietuvos laiku)
 ```
 
 **Trigger logika (n8n Function node):**
 
-1. Nuskaityti visas uzklausas is Google Sheets
-2. Filtruoti kur follow-up data <= dabartine data IR follow-up statusas != "Issiusta"
-3. Kiekvienai tokiai uzklausai siusti atitinkama email
-4. Atnaujinti Google Sheets statusa
+1. Nuskaityti visas užklausas iš Google Sheets
+2. Filtruoti kur follow-up data <= dabartinė data IR follow-up statusas != "Išsiųsta"
+3. Kiekvienai tokiai užklausai siųsti atitinkamą email
+4. Atnaujinti Google Sheets statusą
 
 ---
 
-### Gmail konfiguracija
+### Gmail konfigūracija
 
-- **Siuntejo pastas:** Konfigurojamas n8n Gmail credentials (info@ldaenergia.lt)
+- **Siuntėjo paštas:** Konfigūrojamas n8n Gmail credentials (info@ldaenergia.lt)
 - **Reply-to:** info@ldaenergia.lt
 - **Formato tipas:** HTML
-- **Unsubscribe header:** Itraukiamas automatiskai
+- **Unsubscribe header:** Įtraukiamas automatiškai
 
 ---
 
-## Isvestys (Outputs)
+## Išvestys (Outputs)
 
-- 4 email'ai issiusti per 5 dienu laikotarpi
+- 4 email'ai išsiųsti per 5 dienų laikotarpį
 - Google Sheets atnaujintas su kiekvieno email statusu ir data
 - Galutinis statusas "Seka baigta" po D5
 
 ---
 
-## Krasztiniu Atveju Valdymas (Edge Cases)
+## Kraštinių Atvejų Valdymas (Edge Cases)
 
-### Klientas jau atsake
-- Jei administratorius Google Sheets pakeicia "Pasiulymo statusas" i "Atsake" arba "Uzsakyta" - sekantys follow-up nesiuniami
-- Schedule trigger tikrina statusa pries siunciant
+### Klientas jau atsakė
+- Jei administratorius Google Sheets pakeičia "Pasiūlymo statusas" į "Atsakė" arba "Užsakyta" - sekantys follow-up nesiunčiami
+- Schedule trigger tikrina statusą prieš siunčiant
 
 ### Unsubscribe
-- Jei administratorius pazymi "Pasiulymo statusas" = "Atsisake" - visi follow-up sustabdomi
-- Email apacije yra nuoroda su tekstu "Jei nebenorite gauti musu zinuciu, parasykite mums"
+- Jei administratorius pažymi "Pasiūlymo statusas" = "Atsisakė" - visi follow-up sustabdomi
+- Email apačioje yra nuoroda su tekstu "Jei nebenorite gauti mūsų žinučių, parašykite mums"
 
 ### Email siuntimo klaida
-- Jei Gmail grazina klaida: n8n retry 3 kartus su 5 min intervalu
-- Jei vis tiek nepavyksta: Google Sheets stulpelyje "Pastabos" irasomas "Email klaida: [priezastis]"
+- Jei Gmail grąžina klaidą: n8n retry 3 kartus su 5 min intervalu
+- Jei vis tiek nepavyksta: Google Sheets stulpelyje "Pastabos" įrašomas "Email klaida: [priežastis]"
 
-### Savaigaliniai ir sventes
-- Schedule trigger veikia kiekviena diena (ieskaitant savaitgalius)
-- Email siuniami tik darbo valandomis: 08:00-20:00
-- Jei follow-up data buvo savaitgali, email issiunciamas pirmadieni 08:00
+### Savaitgaliai ir šventės
+- Schedule trigger veikia kiekvieną dieną (įskaitant savaitgalius)
+- Email siunčiami tik darbo valandomis: 08:00-20:00
+- Jei follow-up data buvo savaitgalį, email išsiunčiamas pirmadienį 08:00
 
-### Daug uzklausu vienu metu
-- n8n apdoroja po viena uzklausa
-- Gmail API limitas: 500 email/diena (pakankamas siame etape)
-- Jei pasiekiamas limitas: n8n sustoja ir praneasa administratoriui
+### Daug užklausų vienu metu
+- n8n apdoroja po vieną užklausą
+- Gmail API limitas: 500 email/dieną (pakankamas šiame etape)
+- Jei pasiekiamas limitas: n8n sustoja ir praneša administratoriui

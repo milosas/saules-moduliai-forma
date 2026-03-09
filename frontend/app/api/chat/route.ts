@@ -13,9 +13,11 @@ import {
   escalateToHuman,
 } from "@/lib/chatbot-tools";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+function getOpenAI() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+}
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -50,7 +52,7 @@ export async function POST(request: Request) {
     ];
 
     // First call - may include tool calls
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAI().chat.completions.create({
       model: CHATBOT_MODEL,
       messages: openaiMessages,
       tools: CHATBOT_TOOLS,
@@ -132,7 +134,7 @@ export async function POST(request: Request) {
     }
 
     // Second call with tool results
-    const followUp = await openai.chat.completions.create({
+    const followUp = await getOpenAI().chat.completions.create({
       model: CHATBOT_MODEL,
       messages: toolMessages,
       temperature: CHATBOT_TEMPERATURE,

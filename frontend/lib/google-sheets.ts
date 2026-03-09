@@ -55,13 +55,15 @@ export async function getUzklausos(): Promise<Uzklausas[]> {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId: sheetsId,
-    range: "Užklausos!A2:Z",
+    range: "Uzklausos!A2:Z",
   });
 
   const rows = response.data.values || [];
 
-  return rows.map((row, index) => ({
-    id: row[0] || String(index + 1),
+  return rows
+    .filter((row) => row[0] && row[0].trim() !== "" && row[2] && row[2].trim() !== "")
+    .map((row) => ({
+    id: row[0],
     data: row[1] || "",
     vardas: row[2] || "",
     email: row[3] || "",
@@ -89,3 +91,4 @@ export async function getUzklausos(): Promise<Uzklausas[]> {
     pastabos: row[25] || "",
   }));
 }
+

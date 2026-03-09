@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const N8N_TEST_EMAILS_URL = "https://n8n.blingo.lt/webhook/test-emails-v2";
-const N8N_SEED_DATA_URL = "https://n8n.blingo.lt/webhook/seed-fake-data-k8m3";
+const N8N_SEED_DATA_URL = "https://n8n.blingo.lt/webhook/seed-fake-saules-m4x7";
 
 export async function POST(request: NextRequest) {
   try {
